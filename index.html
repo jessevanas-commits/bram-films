@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f1e6">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <title>De films van Bram – tekenfilms voor kinderen</title>
+  <meta name="description" content="Alle tekenfilms en afleveringen van Bram het kikkertje en zijn vrienden Fien en Moos.">
+  <meta property="og:title" content="De films van Bram">
+  <meta property="og:image" content="assets/hero.webp">
+</head>
+<body>
+  <a class="skiplink" href="#films">Ga meteen naar de films</a>
+  <header class="hero" role="banner">
+    <img class="hero__beeld" src="assets/hero.webp" srcset="assets/hero-klein.webp 640w, assets/hero.webp 1280w" sizes="100vw" width="1280" height="720" alt="Bram het kikkertje juicht boven op een reuzenpompoen, Fien het uiltje trekt aan een touw en Moos de mol duwt de kar.">
+    <div class="wrap hero__tekst">
+      <h1 class="hero__titel">De films van <span>Bram</span></h1>
+      <p class="hero__sub">Tekenfilms over een klein groen kikkertje en zijn vrienden Fien en Moos.</p>
+    </div>
+  </header>
+
+  <main id="films" class="wrap" tabindex="-1">
+    <form id="zoekform" class="balk" role="search" aria-label="Films zoeken en filteren">
+      <div class="balk__groep">
+        <label for="zoek">Zoek een film</label>
+        <input id="zoek" class="veld" type="search" placeholder="Bijvoorbeeld: pompoen" autocomplete="off">
+      </div>
+      <fieldset class="balk__groep">
+        <legend>Reeks</legend>
+        <div id="reeksen" class="chips"></div>
+      </fieldset>
+      <div class="balk__groep">
+        <label for="sorteer">Sorteer</label>
+        <select id="sorteer" class="veld">
+          <option value="volgorde">Per reeks en aflevering</option>
+          <option value="nieuw">Nieuwste eerst</option>
+          <option value="titel">Op titel (A–Z)</option>
+        </select>
+      </div>
+    </form>
+
+    <section aria-labelledby="alle-titel" style="position:relative">
+      <h2 class="kop" id="alle-titel">Alle films en afleveringen</h2>
+      <img class="fien" src="assets/figuren/fien.webp" alt="" aria-hidden="true" width="140" height="140">
+      <p id="teller" class="teller" aria-live="polite"></p>
+      <ul id="raster" class="raster"></ul>
+      <noscript><p>Zet JavaScript aan om de films te zien.</p></noscript>
+    </section>
+  </main>
+
+  <footer class="voet">
+    <div class="wrap voet__inhoud">
+      <div>
+        <p><strong>De films van Bram</strong>: tekenfilms voor kinderen van 5 tot 10 jaar.</p>
+        <p>&copy; <span id="jaar">2026</span> Jesse Van As, Antwerpen</p>
+      </div>
+      <div class="figuren" aria-hidden="true">
+        <img class="f-bram" src="assets/figuren/bram.webp" alt="" width="78" height="120" loading="lazy">
+        <img class="f-moos" src="assets/figuren/moos.webp" alt="" width="92" height="110" loading="lazy">
+        <img class="f-bolleke" src="assets/figuren/bolleke.webp" alt="" width="84" height="84" loading="lazy">
+      </div>
+    </div>
+  </footer>
+
+  <script src="films.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
