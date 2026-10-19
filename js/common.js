@@ -92,7 +92,7 @@
   };
 
   /* Vallende blaadjes (alleen decoratie) */
-  B.blaadjes = function (n) {
+  B.blaadjes = function (n) { return; /* uitgeschakeld: site is voor alle seizoenen */
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var box = B.el("div", { class: "blaadjes", "aria-hidden": "true" });
     for (var i = 0; i < (n || 9); i++) {

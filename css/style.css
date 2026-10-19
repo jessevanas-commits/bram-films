@@ -7,8 +7,8 @@
 :root {
   --papier: #f6f1e6;
   --papier-donker: #ede3cf;
-  --oranje: #b04e18;
-  --oranje-licht: #e58a3c;
+  --oranje: #2c6fa3;
+  --oranje-licht: #f2c64b;
   --groen: #466e28;
   --groen-licht: #8bb04f;
   --bruin: #54381e;
@@ -37,7 +37,7 @@ a:hover { color: var(--groen); }
 .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; isolation: isolate; color: var(--bruin); background: #f3e3c4;
+.hero { position: relative; isolation: isolate; color: var(--bruin); background: #dcecf5;
   min-height: clamp(340px, 46vw, 600px); display: flex; align-items: flex-start; overflow: hidden; }
 .hero__beeld { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 62%; z-index: 0; }
 .hero::after { /* gescheurde papierrand onderaan */
@@ -69,7 +69,7 @@ a:hover { color: var(--groen); }
 .knop:hover { transform: rotate(-1.5deg) translateY(-1px); background: #fff3dc; color: var(--bruin); }
 .knop[aria-pressed="true"] { background: var(--groen); border-color: var(--groen); color: #fff; }
 .knop--oranje { background: var(--oranje); border-color: var(--oranje); color: #fff; }
-.knop--oranje:hover { background: #c35a20; color: #fff; }
+.knop--oranje:hover { background: #245d8a; color: #fff; }
 
 /* ---------- Zoek/filterbalk ---------- */
 .balk { position: relative; z-index: 3; margin-top: -.5rem; display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: end; }
@@ -110,7 +110,7 @@ a:hover { color: var(--groen); }
 .kaart__beeld:hover img, .kaart__beeld:focus-visible img { transform: scale(1.04); }
 .kaart__beeld video { width: 100%; height: 100%; background: #000; }
 .speelknop { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 74px; height: 74px; display: grid; place-items: center;
-  border-radius: 46% 54% 50% 50% / 52% 46% 54% 48%; background: rgba(176,78,24,.92); color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.3);
+  border-radius: 46% 54% 50% 50% / 52% 46% 54% 48%; background: rgba(44,111,163,.92); color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.3);
   border: 3px solid #fff3dc; transition: transform .2s; }
 .speelknop svg { width: 30px; height: 30px; margin-left: 5px; }
 .kaart__beeld:hover .speelknop, .kaart__beeld:focus-visible .speelknop { transform: scale(1.1) rotate(-4deg); }
