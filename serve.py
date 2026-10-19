@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Kleine lokale webserver voor De films van Bram (alleen om te testen).
+"""Kleine lokale webserver voor De avonturen van Bram (alleen om te testen).
 
 Zoals `python3 -m http.server 8000`, maar met ondersteuning voor 'Range'-
 verzoeken, zodat je in de film kunt doorspoelen. Start: python3 serve.py [poort]
@@ -64,7 +64,7 @@ if __name__ == "__main__":
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
     url = f"http://localhost:{port}/"
     with Server(("", port), Handler) as httpd:
-        print(f"De films van Bram draait op {url}  (stoppen: Ctrl+C of sluit dit venster)")
+        print(f"De avonturen van Bram draait op {url}  (stoppen: Ctrl+C of sluit dit venster)")
         if "--geen-browser" not in sys.argv:
             threading.Timer(1.0, lambda: webbrowser.open(url)).start()
         try: httpd.serve_forever()

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Dubbelklik op dit bestand op een Mac om De films van Bram te openen op http://localhost:8000
+# Dubbelklik op dit bestand op een Mac om De avonturen van Bram te openen op http://localhost:8000
 cd "$(dirname "$0")" || exit 1
 if [ -f serve.py ]; then
   python3 serve.py 8000

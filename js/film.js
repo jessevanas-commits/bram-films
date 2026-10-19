@@ -8,7 +8,7 @@
   var main = document.getElementById("inhoud");
 
   if (!f) {
-    document.title = "Film niet gevonden – De films van Bram";
+    document.title = "Film niet gevonden – De avonturen van Bram";
     main.appendChild(el("div", { class: "leeg" }, [
       el("img", { src: "assets/figuren/moos.webp", alt: "" }),
       el("h1", { class: "film-titel", text: "Oei, die film vinden we niet" }),
@@ -17,7 +17,7 @@
     B.jaar(); return;
   }
 
-  document.title = f.titel + " – De films van Bram";
+  document.title = f.titel + " – De avonturen van Bram";
   var md = document.querySelector('meta[name="description"]'); if (md && f.beschrijving) md.setAttribute("content", f.beschrijving);
   var online = B.isOnline(f), video = null;
 

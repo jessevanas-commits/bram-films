@@ -1,5 +1,5 @@
 /*
- * De films van Bram – alle films en afleveringen staan in deze ene lijst.
+ * De avonturen van Bram – alle films en afleveringen staan in deze ene lijst.
  * Een nieuwe film toevoegen? Kopieer het sjabloon uit README.md,
  * plak het hieronder tussen de rechte haken [ ... ] en vergeet de komma niet.
  *

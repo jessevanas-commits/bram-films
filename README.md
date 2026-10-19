@@ -1,4 +1,4 @@
-# De films van Bram
+# De avonturen van Bram
 
 Een eenvoudige website (gewoon HTML, CSS en JavaScript, zonder installatie of build-stap) waarop alle films en afleveringen van Bram staan. Je hebt geen server of domein nodig om ze te bekijken.
 

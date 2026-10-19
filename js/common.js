@@ -1,4 +1,4 @@
-/* Gedeelde hulpjes voor De films van Bram */
+/* Gedeelde hulpjes voor De avonturen van Bram */
 (function () {
   "use strict";
   var B = (window.Bram = {});
