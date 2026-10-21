@@ -18,7 +18,7 @@
       beeld = el("button", { class: "kaart__beeld", type: "button", "aria-label": "Speel " + f.titel + (f.duur ? " (" + B.duurTekst(f.duur) + ")" : ""),
         onclick: function () { B.speelInLichtbak(f); } }, [img, el("span", { class: "speelknop" }, [B.speelIcoon()])]);
     } else {
-      beeld = el("div", { class: "kaart__beeld" }, [img, el("span", { class: "stempel", text: "Binnenkort" })]);
+      beeld = el("div", { class: "kaart__beeld" }, [img, el("span", { class: "stempel", text: "Binnenkort beschikbaar" })]);
     }
     if (f.duur) beeld.appendChild(el("span", { class: "duur", "aria-hidden": "true", text: f.duur }));
     var pagina = "film.html?id=" + encodeURIComponent(f.id);

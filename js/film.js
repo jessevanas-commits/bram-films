@@ -26,12 +26,12 @@
     main.appendChild(el("div", { class: "speler" }, [video]));
   } else {
     main.appendChild(el("div", { class: "speler kaart--binnenkort" }, [el("div", { class: "kaart__beeld" }, [
-      el("img", { src: f.poster || f.posterKlein, alt: "Afbeelding bij " + f.titel }), el("span", { class: "stempel", text: "Binnenkort" })])]));
+      el("img", { src: f.poster || f.posterKlein, alt: "Afbeelding bij " + f.titel }), el("span", { class: "stempel", text: "Binnenkort beschikbaar" })])]));
   }
 
   var meta = el("ul", { class: "meta", "aria-label": "Over deze film" });
   [B.label(f), f.duur ? "⏱ " + B.duurTekst(f.duur) : "", f.scenes && f.scenes.length ? f.scenes.length + " scènes" : "",
-   f.leeftijd ? "Voor " + f.leeftijd : "", online ? "" : "Binnenkort te zien"].filter(Boolean).forEach(function (t) { meta.appendChild(el("li", { text: t })); });
+   f.leeftijd ? "Voor " + f.leeftijd : "", online ? "" : "Binnenkort beschikbaar: de stemmen worden nog ingesproken"].filter(Boolean).forEach(function (t) { meta.appendChild(el("li", { text: t })); });
 
   var links = el("div", null, [
     el("h1", { class: "film-titel", text: f.titel }), meta,
