@@ -33,6 +33,7 @@
     fien: beeld("assets/figuren/fien.webp"),
     fien2: beeld("assets/spel/fien-vleugel.webp"),
     moos: beeld("assets/spel/moos.webp"),
+    moosJuich: beeld("assets/spel/moos-juich.webp"),
     bolleke: beeld("assets/figuren/bolleke.webp"),
     papier: beeld("assets/papier.png")
   };
@@ -269,7 +270,7 @@
     g.lineTo(W, grond + 10); g.lineTo(0, grond + 10); g.closePath(); g.fill();
     g.fillStyle = "rgba(84,56,30,.18)"; for (var i = 0; i < 26; i++) { g.beginPath(); g.ellipse((i * 137) % W, grond + 18 + (i * 53) % Math.max(10, H - grond - 22), 6, 2.5, 0, 0, Math.PI * 2); g.fill(); }
     /* mollenhopen in de hoeken */
-    [W * .07, W * .93].forEach(function (x) {
+    [W * MOOS_X, W * (1 - MOOS_X)].forEach(function (x) {
       g.fillStyle = "#7a5230"; g.beginPath(); g.ellipse(x, grond + 6, 62, 13, 0, 0, Math.PI * 2); g.fill();
       g.fillStyle = "#3a2614"; g.beginPath(); g.ellipse(x, grond + 6, 46, 8, 0, 0, Math.PI * 2); g.fill();
     });
@@ -283,6 +284,7 @@
   var bram = { x: 400, w: 163, h: 172, doel: null, v: 0, kantel: 0, bah: 0, plof: 0, hop: 0, mand: [] };
   var dingen = [], deeltjes = [], teksten = [];
   var fien = null, moos = null, ballon = null;
+  var MOOS_X = .12;          /* plaats van de mollenhopen (deel van de breedte) */
   var punten = 0, tijd = 0, volgende = 0, volgendeFien = 0, reeks = 0, laatsteTik = 99, bijnaGezegd = false, schud = 0;
   var toetsL = false, toetsR = false;
 
@@ -339,7 +341,7 @@
   /* ---------- figuren ---------- */
   function moosZegt(tekst) {
     var links = bram.x > W / 2;            /* Moos komt op aan de andere kant dan Bram */
-    moos = { x: links ? W * .07 : W * .93, t: 0, duur: 2.2, tekst: tekst };
+    moos = { x: links ? W * MOOS_X : W * (1 - MOOS_X), t: 0, duur: 2.2, tekst: tekst, juich: tekst !== "Vang ze!" };
     speel("moos");
   }
   function bramZegt(tekst) { ballon = { tekst: tekst, t: 0, duur: 1 }; }
@@ -481,6 +483,18 @@
     ctx.fillStyle = LIJN; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(tekst, x, t + bh * .54);
   }
 
+  /* voorkant van een molshoop: aarde met kluitjes, over de onderkant van Moos */
+  function molshoop(x) {
+    var b = 70, h = 22, y = grond + 10;
+    ctx.beginPath(); ctx.moveTo(x - b, y + 4); ctx.quadraticCurveTo(x - b * .55, y - h * 1.1, x, y - h); ctx.quadraticCurveTo(x + b * .55, y - h * 1.1, x + b, y + 4); ctx.closePath();
+    ctx.fillStyle = "#6e4a2b"; ctx.fill(); ctx.lineWidth = 2.5; ctx.strokeStyle = "#3a2614"; ctx.stroke();
+    for (var i = 0; i < 9; i++) {
+      var u = (i / 8) * 2 - 1, kx = x + u * b * .78, ky = y - h * (1 - u * u) * .85 + (i % 3) * 3, kr = 6 + (i * 7 % 5);
+      ctx.beginPath(); ctx.ellipse(kx, ky, kr * 1.3, kr, (i * .7) % 3, 0, Math.PI * 2);
+      ctx.fillStyle = i % 2 ? "#5a3a20" : "#87603a"; ctx.fill(); ctx.lineWidth = 1.5; ctx.stroke();
+    }
+  }
+
   function tekenMand(m) {
     var l = m.x - m.w / 2, t = m.top, w = m.w, h = m.h;
     /* wat er al in de mand zit */
@@ -504,16 +518,20 @@
 
     var moosWolk = null;
     /* Moos uit zijn hoopje */
+    /* Moos (uit de film) komt uit zijn molshoop; bij het juichen wisselt hij tussen twee tekeningen */
     if (moos && ok(IMG.moos)) {
-      var mw = Math.min(W * .24, 150), mh = mw * IMG.moos.naturalHeight / IMG.moos.naturalWidth;
+      var mimg = IMG.moos;
+      if (moos.juich && ok(IMG.moosJuich)) mimg = rustig.matches || Math.floor(moos.t / .35) % 2 === 0 ? IMG.moosJuich : IMG.moos;
+      var mw = Math.min(W * .26, 170), mh = mw * mimg.naturalHeight / mimg.naturalWidth;
       var f = moos.t < .3 ? moos.t / .3 : moos.t > moos.duur - .3 ? (moos.duur - moos.t) / .3 : 1;
       if (rustig.matches) f = 1;
       ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, grond + 8); ctx.clip();
-      var my = grond + 8 - mh * (.15 + .85 * f);
+      var my = grond + 10 - mh * (.1 + .9 * f);
       var spiegel = moos.x > W / 2 ? -1 : 1;
-      ctx.translate(moos.x, my); ctx.scale(spiegel, 1); ctx.drawImage(IMG.moos, -mw / 2, 0, mw, mh); ctx.restore();
-      if (f > .8) moosWolk = [moos.x + (moos.x > W / 2 ? -mw * .35 : mw * .35), my - 6, moos.tekst, 26, moos.x];
+      ctx.translate(moos.x, my); ctx.scale(spiegel, 1); ctx.drawImage(mimg, -mw * .42, 0, mw, mh); ctx.restore();
+      if (f > .8) moosWolk = [moos.x + (moos.x > W / 2 ? -mw * .3 : mw * .3), my - 6, moos.tekst, 26, moos.x];
     }
+    [W * MOOS_X, W * (1 - MOOS_X)].forEach(molshoop);
 
     /* Fien */
     if (fien && ok(IMG.fien)) {
