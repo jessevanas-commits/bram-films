@@ -49,6 +49,24 @@
       <ul id="raster" class="raster"></ul>
       <noscript><p>Zet JavaScript aan om de films te zien.</p></noscript>
     </section>
+    <section class="ouder" aria-labelledby="ouder-titel">
+      <h2 class="kop" id="ouder-titel">Film voor oudere kinderen</h2>
+      <div class="ouder__kaart">
+        <img class="ouder__beeld" src="assets/sprite-fright.webp" alt="Sprite Fright, Nederlandstalige versie" width="800" height="420" loading="lazy">
+        <div class="ouder__tekst">
+          <h3>Sprite Fright <small>(Nederlandstalig)</small></h3>
+          <p>Deze film is wat spannender en bedoeld voor oudere kinderen. Los eerst de som op om de link te openen.</p>
+          <form id="somform" class="som" autocomplete="off">
+            <label for="som">Hoeveel is 5 &times; 5?</label>
+            <div class="som__rij">
+              <input id="som" class="veld" type="text" inputmode="numeric" maxlength="3" required>
+              <button class="knop knop--oranje" type="submit">Controleer</button>
+            </div>
+            <p id="somuitkomst" class="som__uitkomst" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="voet">
@@ -67,5 +85,6 @@
   <script src="films.js"></script>
   <script src="js/common.js"></script>
   <script src="js/index.js"></script>
+  <script src="js/oudere.js"></script>
 </body>
 </html>

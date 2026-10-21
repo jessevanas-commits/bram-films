@@ -235,3 +235,19 @@ dialog.lichtbak::backdrop { background: rgba(43,29,16,.72); }
   .uitgelicht .speelknop { width: 96px; height: 96px; }
   .uitgelicht .speelknop svg { width: 40px; height: 40px; }
 }
+
+/* ---------- Film voor oudere kinderen ---------- */
+.ouder { margin: 2.5rem 0 1rem; }
+.ouder__kaart { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 1.2rem; align-items: center;
+  background: #fffaf0; border: 2px solid var(--bruin); border-radius: var(--radius-blob); box-shadow: var(--schaduw); padding: 1rem; }
+.ouder__beeld { width: 100%; height: auto; border-radius: 16px; display: block; }
+.ouder__tekst h3 { margin: 0 0 .3rem; font-size: 1.6rem; color: var(--oranje); }
+.ouder__tekst h3 small { font-size: .6em; color: var(--bruin-zacht); }
+.ouder__tekst p { margin: .3rem 0 .8rem; }
+.som label { font-weight: 700; font-size: 1.25rem; display: block; margin-bottom: .3rem; }
+.som__rij { display: flex; gap: .6rem; flex-wrap: wrap; }
+.som__rij .veld { width: 5.5rem; font-size: 1.25rem; text-align: center; }
+.som__uitkomst { min-height: 1.5em; font-weight: 700; }
+.som__uitkomst--goed { color: var(--groen); }
+.som__uitkomst--fout { color: var(--rood); }
+@media (max-width: 700px) { .ouder__kaart { grid-template-columns: 1fr; } }
