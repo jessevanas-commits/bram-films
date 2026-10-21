@@ -27,7 +27,7 @@ window.BRAM_FILMS = [
     duur: "10:00",
     reeks: "Bram – Seizoen 1",
     aflevering: 1,
-    status: "online",
+    status: "binnenkort",
     datum: "2026-10-19",
     leeftijd: "5 tot 10 jaar",
     beschrijving:
